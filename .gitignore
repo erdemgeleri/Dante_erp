@@ -1,0 +1,44 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# CodeIgniter cache & logs
+application/cache/*
+!application/cache/index.html
+
+application/logs/*
+!application/logs/index.html
+
+# Environment specific config (sunucuya özel olacak)
+application/config/database.php
+application/config/config.php
+
+# Upload edilen dosyalar (kullanıcı içerikleri)
+uploads/*
+!uploads/index.html
+
+# .htaccess dosyalarını hariç tutma (bunlar kalsın)
+!application/*/.htaccess
+
+# Composer / vendor (kullanmıyorsan zaten boş olur)
+vendor/
+composer.lock
+
+# Test ve dokümantasyon çıktıları
+tests/mocks/database/ci_test.sqlite
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+# IDE dosyaları
+.idea/
+.vscode/
+nbproject/
+
+# Sublime
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
