@@ -1,5 +1,4 @@
 <?php 
-    // Sayfa başlığı ve kullanıcı bilgileri
     $page_title = 'Super Admin Dashboard';
     $user_name = 'Super Admin';
     $user_initials = 'SA';
@@ -9,7 +8,6 @@
 <?php $this->load->view('partials/header'); ?>
 
 <style>
-    /* Top Section */
     .top-section {
         display: flex;
         justify-content: space-between;
@@ -57,7 +55,6 @@
         letter-spacing: 0.5px;
     }
 
-    /* Section Title */
     .section-title {
         font-size: 16px;
         font-weight: 700;
@@ -65,7 +62,6 @@
         color: var(--text-dark);
     }
 
-    /* Grid System */
     .grid-2 {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -80,7 +76,6 @@
         margin-bottom: 32px;
     }
 
-    /* Card */
     .card {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
@@ -95,7 +90,6 @@
         box-shadow: var(--shadow-lg);
     }
 
-    /* Module Card */
     .module-card {
         display: flex;
         flex-direction: column;
@@ -131,7 +125,6 @@
         line-height: 1.4;
     }
 
-    /* Module Icons - Color Variants */
     .icon-blue {
         background: rgba(37, 99, 235, 0.1);
         color: var(--accent-color);
@@ -172,7 +165,6 @@
         color: #ec4899;
     }
 
-    /* Info Cards */
     .info-card {
         padding: 16px;
     }
@@ -223,7 +215,6 @@
         color: var(--danger);
     }
 
-    /* List Items */
     .list-item {
         padding: 12px 0;
         border-bottom: 1px solid var(--border-color);
@@ -246,7 +237,6 @@
         color: var(--text-light);
     }
 
-    /* Action Buttons */
     .action-buttons {
         display: flex;
         gap: 8px;
@@ -291,14 +281,12 @@
         font-size: 11px;
     }
 
-    /* Divider */
     .divider {
         height: 1px;
         background: var(--border-color);
         margin: 20px 0;
     }
 
-    /* Smooth Animations */
     @keyframes slideIn {
         from {
             opacity: 0;
@@ -327,7 +315,6 @@
     .card:nth-child(11) { animation-delay: 0.55s; }
     .card:nth-child(12) { animation-delay: 0.6s; }
 
-    /* Responsive */
     @media (max-width: 1024px) {
         .top-section {
             flex-direction: column;
@@ -370,7 +357,6 @@
     }
 </style>
 
-<!-- Welcome Section -->
 <div class="top-section">
     <div class="welcome-section">
         <h1>Hoş Geldiniz</h1>
@@ -392,7 +378,6 @@
     </div>
 </div>
 
-<!-- Management Tools -->
 <h2 class="section-title">Yönetim Araçları</h2>
 <div class="grid-4">
     <div class="card module-card" onclick="window.location.href='<?= site_url('superadmin/users') ?>'">
@@ -460,7 +445,6 @@
     </div>
 </div>
 
-<!-- System Monitoring -->
 <h2 class="section-title">Sistem Durumu</h2>
 <div class="grid-2">
     <div class="card info-card">

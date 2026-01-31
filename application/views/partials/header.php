@@ -168,7 +168,7 @@
     <!-- Header -->
     <div class="header">
         <div class="header-container">
-            <a href="<?= site_url('dashboard') ?>" class="logo">
+            <a class="logo">
                 <i class="fas fa-cubes"></i>
                 <span>DANTE ERP</span>
             </a>

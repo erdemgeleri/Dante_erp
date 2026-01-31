@@ -8,26 +8,17 @@ class SuperAdmin extends MY_Controller {
         $this->load->library('form_validation');
         $this->load->model('Auth_user_model');
         $this->load->model('User_profile_model');
-        // Sadece super admin erişebilir
         $this->requireSuperAdmin();
     }
 
-    // Super admin ana panel sayfası
     public function dashboard() {
-        // Burada view göstereceğiz
         $this->load->view('superadmin/dashboard');
     }
 
-    // Users modülü
-    public function users() {
-        $this->load->view('superadmin/users');
-    }
 
-    // Kullanıcı ekleme formu
     public function add_user() {
         $this->load->view('superadmin/add_user');
     }
-    // Kullanıcı kayıt etme işlemi
     public function add_user_post(){
         $this->form_validation->set_rules(
             'name', 
@@ -92,5 +83,33 @@ class SuperAdmin extends MY_Controller {
         $this->User_profile_model->create($profileData);
         redirect('superadmin/users');
     }
+
+    public function users() {
+        $this->load->library('pagination');
+        $config['base_url'] = site_url('superadmin/users');
+        $config['total_rows'] = $this->Auth_user_model->count_all();
+        $config['per_page'] = 10;
+        $config['uri_segment'] = 3;
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = 'İlk';
+        $config['last_link'] = 'Son';
+        $config['next_link'] = '>';
+        $config['prev_link'] = '<';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+        $this->pagination->initialize($config);
+
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['users'] = $this->Auth_user_model->get_all_with_profiles($config['per_page'], $page);
+        $data['pagination'] = $this->pagination->create_links();
+
+        $this->load->view('superadmin/users', $data);
+    }
+
+
 }
 
