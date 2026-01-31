@@ -1,0 +1,26 @@
+# Dante ERP 🚀
+
+**Dante ERP**, şirketler için modüler ve yönetilebilir bir ERP sistemidir.  
+Proje geliştirme aşamasında olup, temel kullanıcı yönetimi, müşteri yönetimi ve sipariş/monitoring modüllerini içerir.
+
+---
+
+## 📝 Özellikler (Devam Ediyor)
+
+- Kullanıcı yönetimi: Ekleme, silme, roller  
+- Müşteri yönetimi: Yeni müşteri ekleme, güncelleme  
+- Sipariş ve Cart yönetimi  
+- Monitoring ve raporlama modülleri  
+- Modüler yapı, kolay geliştirme ve entegrasyon  
+
+> ⚠️ Proje aktif geliştirme aşamasında. Yeni modüller ve iyileştirmeler gelecek.
+
+---
+
+## 💻 Kurulum
+
+1. Repo’yu klonlayın:
+
+```bash
+git clone https://github.com/erdemgeleri/Dante_erp.git
+cd Dante_erp
