@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="<?= isset($current_lang) ? $current_lang : 'tr' ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Dante ERP</title>
+    <title><?= $this->lang->line('page_dashboard') ?> - <?= $this->lang->line('app_name') ?></title>
     <style>
         * {
             margin: 0;
@@ -400,128 +400,133 @@
 <body>
     <header>
         <div class="header-left">
-            <a href="<?= site_url('dashboard') ?>" class="logo">DANTE ERP</a>
+            <a href="<?= site_url('dashboard') ?>" class="logo"><?= $this->lang->line('app_name') ?></a>
             <ul class="nav-menu">
-                <li><a href="<?= site_url('dashboard') ?>">Anasayfa</a></li>
-                <li><a href="<?= site_url('projects') ?>">Projeler</a></li>
-                <li><a href="<?= site_url('earnings') ?>">Raporlar</a></li>
-                <li><a href="<?= site_url('messages') ?>">Mesajlar</a></li>
+                <li><a href="<?= site_url('dashboard') ?>"><?= $this->lang->line('nav_home') ?></a></li>
+                <li><a href="<?= site_url('projects') ?>"><?= $this->lang->line('nav_projects') ?></a></li>
+                <li><a href="<?= site_url('earnings') ?>"><?= $this->lang->line('nav_reports') ?></a></li>
+                <li><a href="<?= site_url('messages') ?>"><?= $this->lang->line('nav_messages') ?></a></li>
             </ul>
         </div>
         <div class="header-right">
             <div class="user-profile">
-                <div class="avatar">Ö</div>
-                <span class="user-name">Öğrenci</span>
+                <div class="avatar"><?= isset($user_initials) ? $user_initials : 'Ö' ?></div>
+                <span class="user-name"><?= isset($user_name) ? $user_name : $this->lang->line('user_role_user') ?></span>
             </div>
-            <button class="logout-btn" onclick="window.location.href='<?= site_url('auth/logout') ?>'">Çıkış</button>
+            <?php if (isset($current_lang)): ?>
+            <a href="<?= site_url('lang/set/tr') ?>" style="font-size:12px; color:#666; text-decoration:none;"><?= $this->lang->line('lang_tr') ?></a>
+            <span style="color:#ccc">|</span>
+            <a href="<?= site_url('lang/set/en') ?>" style="font-size:12px; color:#666; text-decoration:none;"><?= $this->lang->line('lang_en') ?></a>
+            <?php endif; ?>
+            <button class="logout-btn" onclick="window.location.href='<?= site_url('auth/logout') ?>'"><?= $this->lang->line('btn_logout') ?></button>
         </div>
     </header>
 
     <div class="container">
         <div class="welcome">
-            <h1>Hoşgeldiniz! 👋</h1>
-            <p>Sisteminizin güncel durumunu görüntüleyin ve yönetin.</p>
+            <h1><?= $this->lang->line('welcome_title') ?></h1>
+            <p><?= $this->lang->line('welcome_desc') ?></p>
         </div>
 
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-label">Aktif İşlemler</div>
+                <div class="stat-label"><?= $this->lang->line('stat_active_ops') ?></div>
                 <div class="stat-value">3</div>
-                <div class="stat-change">↑ 1 yeni</div>
+                <div class="stat-change"><?= $this->lang->line('stat_new') ?></div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Bu Ay</div>
+                <div class="stat-label"><?= $this->lang->line('stat_this_month') ?></div>
                 <div class="stat-value">₺2.450</div>
-                <div class="stat-change">↑ %24 artış</div>
+                <div class="stat-change"><?= $this->lang->line('stat_increase') ?></div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Tamamlanan</div>
+                <div class="stat-label"><?= $this->lang->line('stat_completed') ?></div>
                 <div class="stat-value">28</div>
-                <div class="stat-change">2 beklemede</div>
+                <div class="stat-change"><?= $this->lang->line('stat_pending_count') ?></div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Ortalama Puan</div>
+                <div class="stat-label"><?= $this->lang->line('stat_avg_score') ?></div>
                 <div class="stat-value">4.9</div>
-                <div class="stat-change">⭐ Harika</div>
+                <div class="stat-change"><?= $this->lang->line('stat_great') ?></div>
             </div>
         </div>
 
         <div class="content-grid">
             <div class="card">
-                <h2>Son İşlemler</h2>
+                <h2><?= $this->lang->line('card_recent_ops') ?></h2>
                 <ul class="project-list">
                     <li class="project-item">
                         <div class="project-info">
                             <div class="project-name">Web Sitesi Tasarımı</div>
                             <div class="project-client">ABC Şirketi</div>
                         </div>
-                        <span class="project-status status-active">Aktif</span>
+                        <span class="project-status status-active"><?= $this->lang->line('status_active') ?></span>
                     </li>
                     <li class="project-item">
                         <div class="project-info">
                             <div class="project-name">Logo Tasarımı</div>
                             <div class="project-client">XYZ Inc</div>
                         </div>
-                        <span class="project-status status-pending">Beklemede</span>
+                        <span class="project-status status-pending"><?= $this->lang->line('status_pending') ?></span>
                     </li>
                     <li class="project-item">
                         <div class="project-info">
                             <div class="project-name">Mobile App UI</div>
                             <div class="project-client">TechStart</div>
                         </div>
-                        <span class="project-status status-completed">Tamamlandı</span>
+                        <span class="project-status status-completed"><?= $this->lang->line('status_completed') ?></span>
                     </li>
                     <li class="project-item">
                         <div class="project-info">
                             <div class="project-name">Sosyal Medya İçeriği</div>
                             <div class="project-client">Marketing Co</div>
                         </div>
-                        <span class="project-status status-active">Aktif</span>
+                        <span class="project-status status-active"><?= $this->lang->line('status_active') ?></span>
                     </li>
                 </ul>
-                <a href="<?= site_url('projects') ?>" class="btn btn-primary">Tüm İşlemler</a>
+                <a href="<?= site_url('projects') ?>" class="btn btn-primary"><?= $this->lang->line('btn_all_ops') ?></a>
             </div>
 
             <div>
                 <div class="earnings-widget">
-                    <div class="earnings-label">Toplam Kazanç</div>
+                    <div class="earnings-label"><?= $this->lang->line('earnings_total') ?></div>
                     <div class="earnings-amount">₺24.850</div>
                     <div class="earnings-detail">
-                        <div>Ödenen: ₺22.400</div>
-                        <div style="margin-top: 8px;">Beklenmede: ₺2.450</div>
+                        <div><?= $this->lang->line('earnings_paid') ?> ₺22.400</div>
+                        <div style="margin-top: 8px;"><?= $this->lang->line('earnings_pending') ?> ₺2.450</div>
                     </div>
-                    <a href="<?= site_url('earnings') ?>" class="btn btn-secondary">Detaylar</a>
+                    <a href="<?= site_url('earnings') ?>" class="btn btn-secondary"><?= $this->lang->line('btn_details') ?></a>
                 </div>
 
                 <div class="card">
-                    <h2>Son Aktiviteler</h2>
+                    <h2><?= $this->lang->line('card_recent_activities') ?></h2>
                     <ul class="activity-list">
                         <li class="activity-item">
                             <div class="activity-icon">✓</div>
                             <div class="activity-content">
-                                <div class="activity-title">İşlem Tamamlandı</div>
-                                <div class="activity-time">2 saat önce</div>
+                                <div class="activity-title"><?= $this->lang->line('activity_completed') ?></div>
+                                <div class="activity-time"><?= $this->lang->line('time_2h_ago') ?></div>
                             </div>
                         </li>
                         <li class="activity-item">
                             <div class="activity-icon">💬</div>
                             <div class="activity-content">
-                                <div class="activity-title">Yeni Mesaj</div>
-                                <div class="activity-time">4 saat önce</div>
+                                <div class="activity-title"><?= $this->lang->line('activity_new_message') ?></div>
+                                <div class="activity-time"><?= $this->lang->line('time_4h_ago') ?></div>
                             </div>
                         </li>
                         <li class="activity-item">
                             <div class="activity-icon">⭐</div>
                             <div class="activity-content">
-                                <div class="activity-title">5 Yıldız</div>
-                                <div class="activity-time">1 gün önce</div>
+                                <div class="activity-title"><?= $this->lang->line('activity_5_stars') ?></div>
+                                <div class="activity-time"><?= $this->lang->line('time_1d_ago') ?></div>
                             </div>
                         </li>
                         <li class="activity-item">
                             <div class="activity-icon">💰</div>
                             <div class="activity-content">
-                                <div class="activity-title">Ödeme Yapıldı</div>
-                                <div class="activity-time">3 gün önce</div>
+                                <div class="activity-title"><?= $this->lang->line('activity_payment') ?></div>
+                                <div class="activity-time"><?= $this->lang->line('time_3d_ago') ?></div>
                             </div>
                         </li>
                     </ul>

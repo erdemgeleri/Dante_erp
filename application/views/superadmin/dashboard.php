@@ -1,8 +1,8 @@
-<?php 
-    $page_title = 'Super Admin Dashboard';
+<?php
+    $page_title = $this->lang->line('page_superadmin_dashboard');
     $user_name = 'Super Admin';
     $user_initials = 'SA';
-    $user_role = 'Administrator';
+    $user_role = $this->lang->line('user_role_super_admin');
 ?>
 
 <?php $this->load->view('partials/header'); ?>
@@ -359,120 +359,120 @@
 
 <div class="top-section">
     <div class="welcome-section">
-        <h1>Hoş Geldiniz</h1>
-        <p>ERP Yönetim Sistemi - Sistem Yöneticisi Paneli</p>
+        <h1><?= $this->lang->line('sa_welcome_title') ?></h1>
+        <p><?= $this->lang->line('sa_welcome_desc') ?></p>
     </div>
     <div class="quick-stats">
         <div class="stat-mini">
             <div class="stat-mini-value">1,250</div>
-            <div class="stat-mini-label">Kullanıcı</div>
+            <div class="stat-mini-label"><?= $this->lang->line('sa_stat_user') ?></div>
         </div>
         <div class="stat-mini">
             <div class="stat-mini-value">98.5%</div>
-            <div class="stat-mini-label">Sistem Sağlığı</div>
+            <div class="stat-mini-label"><?= $this->lang->line('sa_stat_health') ?></div>
         </div>
         <div class="stat-mini">
             <div class="stat-mini-value">12</div>
-            <div class="stat-mini-label">Modüller</div>
+            <div class="stat-mini-label"><?= $this->lang->line('sa_stat_modules') ?></div>
         </div>
     </div>
 </div>
 
-<h2 class="section-title">Yönetim Araçları</h2>
+<h2 class="section-title"><?= $this->lang->line('sa_section_tools') ?></h2>
 <div class="grid-4">
     <div class="card module-card" onclick="window.location.href='<?= site_url('superadmin/users') ?>'">
         <div class="module-icon icon-blue">
             <i class="fas fa-user-tie"></i>
         </div>
-        <div class="module-title">Kullanıcılar</div>
-        <div class="module-desc">Kullanıcı hesaplarını yönet</div>
+        <div class="module-title"><?= $this->lang->line('sa_module_users') ?></div>
+        <div class="module-desc"><?= $this->lang->line('sa_module_users_desc') ?></div>
     </div>
 
     <div class="card module-card">
         <div class="module-icon icon-green">
             <i class="fas fa-shield-alt"></i>
         </div>
-        <div class="module-title">İzinler</div>
-        <div class="module-desc">Rol ve yetkilendirme</div>
+        <div class="module-title"><?= $this->lang->line('sa_module_permissions') ?></div>
+        <div class="module-desc"><?= $this->lang->line('sa_module_permissions_desc') ?></div>
     </div>
 
     <div class="card module-card">
         <div class="module-icon icon-orange">
             <i class="fas fa-globe"></i>
         </div>
-        <div class="module-title">Konfigürasyon</div>
-        <div class="module-desc">Sistem ayarları ve parametreler</div>
+        <div class="module-title"><?= $this->lang->line('sa_module_config') ?></div>
+        <div class="module-desc"><?= $this->lang->line('sa_module_config_desc') ?></div>
     </div>
 
     <div class="card module-card">
         <div class="module-icon icon-red">
             <i class="fas fa-history"></i>
         </div>
-        <div class="module-title">Kayıtlar</div>
-        <div class="module-desc">Sistem ve kullanıcı logları</div>
+        <div class="module-title"><?= $this->lang->line('sa_module_logs') ?></div>
+        <div class="module-desc"><?= $this->lang->line('sa_module_logs_desc') ?></div>
     </div>
 
     <div class="card module-card">
         <div class="module-icon icon-purple">
             <i class="fas fa-envelope"></i>
         </div>
-        <div class="module-title">Bildirimler</div>
-        <div class="module-desc">E-posta ve sistem bildirimleri</div>
+        <div class="module-title"><?= $this->lang->line('sa_module_notifications') ?></div>
+        <div class="module-desc"><?= $this->lang->line('sa_module_notifications_desc') ?></div>
     </div>
 
     <div class="card module-card">
         <div class="module-icon icon-cyan">
             <i class="fas fa-clone"></i>
         </div>
-        <div class="module-title">Veri Transfer</div>
-        <div class="module-desc">İthalatı ve ihraçatı yönet</div>
+        <div class="module-title"><?= $this->lang->line('sa_module_transfer') ?></div>
+        <div class="module-desc"><?= $this->lang->line('sa_module_transfer_desc') ?></div>
     </div>
 
     <div class="card module-card">
         <div class="module-icon icon-indigo">
             <i class="fas fa-plug"></i>
         </div>
-        <div class="module-title">Entegrasyonlar</div>
-        <div class="module-desc">Dış sistem bağlantıları</div>
+        <div class="module-title"><?= $this->lang->line('sa_module_integrations') ?></div>
+        <div class="module-desc"><?= $this->lang->line('sa_module_integrations_desc') ?></div>
     </div>
 
     <div class="card module-card">
         <div class="module-icon icon-pink">
             <i class="fas fa-tools"></i>
         </div>
-        <div class="module-title">Bakım</div>
-        <div class="module-desc">Sistem bakım ve optimizasyon</div>
+        <div class="module-title"><?= $this->lang->line('sa_module_maintenance') ?></div>
+        <div class="module-desc"><?= $this->lang->line('sa_module_maintenance_desc') ?></div>
     </div>
 </div>
 
-<h2 class="section-title">Sistem Durumu</h2>
+<h2 class="section-title"><?= $this->lang->line('sa_section_status') ?></h2>
 <div class="grid-2">
     <div class="card info-card">
         <div class="info-card-header">
             <div>
-                <div class="info-label">Sunucu Durumu</div>
-                <div class="info-value">Aktif</div>
+                <div class="info-label"><?= $this->lang->line('sa_server_status') ?></div>
+                <div class="info-value"><?= $this->lang->line('status_active') ?></div>
             </div>
-            <span class="info-badge badge-success">ÇALIŞAN</span>
+            <span class="info-badge badge-success"><?= $this->lang->line('sa_badge_running') ?></span>
         </div>
         <div class="list-item">
-            <span class="list-item-name">CPU Kullanımı</span>
+            <span class="list-item-name"><?= $this->lang->line('sa_cpu_usage') ?></span>
             <span class="list-item-value">42%</span>
         </div>
         <div class="list-item">
-            <span class="list-item-name">Bellek</span>
+            <span class="list-item-name"><?= $this->lang->line('sa_memory') ?></span>
             <span class="list-item-value">6.8GB / 16GB</span>
         </div>
         <div class="list-item">
-            <span class="list-item-name">Disk Alanı</span>
+            <span class="list-item-name"><?= $this->lang->line('sa_disk_space') ?></span>
             <span class="list-item-value">542GB / 1TB</span>
         </div>
         <div class="action-buttons">
             <button class="btn btn-secondary btn-small">
-                <i class="fas fa-sync"></i> Yenile
+                <i class="fas fa-sync"></i> <?= $this->lang->line('sa_btn_refresh') ?>
             </button>
             <button class="btn btn-secondary btn-small">
-                <i class="fas fa-cog"></i> Ayarlar
+                <i class="fas fa-cog"></i> <?= $this->lang->line('sa_btn_settings') ?>
             </button>
         </div>
     </div>
@@ -480,65 +480,65 @@
     <div class="card info-card">
         <div class="info-card-header">
             <div>
-                <div class="info-label">Database</div>
-                <div class="info-value">Sağlıklı</div>
+                <div class="info-label"><?= $this->lang->line('sa_db_status') ?></div>
+                <div class="info-value"><?= $this->lang->line('sa_healthy') ?></div>
             </div>
-            <span class="info-badge badge-success">ÇALIŞAN</span>
+            <span class="info-badge badge-success"><?= $this->lang->line('sa_badge_running') ?></span>
         </div>
         <div class="list-item">
-            <span class="list-item-name">Bağlantılar</span>
+            <span class="list-item-name"><?= $this->lang->line('sa_connections') ?></span>
             <span class="list-item-value">24/50</span>
         </div>
         <div class="list-item">
-            <span class="list-item-name">Boyut</span>
+            <span class="list-item-name"><?= $this->lang->line('sa_size') ?></span>
             <span class="list-item-value">12.4GB</span>
         </div>
         <div class="list-item">
-            <span class="list-item-name">Son Yedek</span>
-            <span class="list-item-value">2 saat önce</span>
+            <span class="list-item-name"><?= $this->lang->line('sa_last_backup') ?></span>
+            <span class="list-item-value"><?= $this->lang->line('time_2h_ago') ?></span>
         </div>
         <div class="action-buttons">
             <button class="btn btn-secondary btn-small">
-                <i class="fas fa-database"></i> Yedek Al
+                <i class="fas fa-database"></i> <?= $this->lang->line('sa_btn_backup') ?>
             </button>
             <button class="btn btn-secondary btn-small">
-                <i class="fas fa-stethoscope"></i> Test Et
+                <i class="fas fa-stethoscope"></i> <?= $this->lang->line('sa_btn_test') ?>
             </button>
         </div>
     </div>
 </div>
 
 <!-- Recent Activities -->
-<h2 class="section-title">Son Aktiviteler</h2>
+<h2 class="section-title"><?= $this->lang->line('sa_section_activities') ?></h2>
 <div class="card">
     <div class="list-item">
         <div>
-            <div class="list-item-name">Cüneyt Yılmaz - Giriş Yaptı</div>
-            <div class="list-item-value">2 dakika önce</div>
+            <div class="list-item-name"><?= $this->lang->line('sa_activity_login') ?></div>
+            <div class="list-item-value"><?= $this->lang->line('sa_time_2m_ago') ?></div>
         </div>
     </div>
     <div class="list-item">
         <div>
-            <div class="list-item-name">Sistem Yedeklemesi Tamamlandı</div>
-            <div class="list-item-value">14 dakika önce</div>
+            <div class="list-item-name"><?= $this->lang->line('sa_activity_backup') ?></div>
+            <div class="list-item-value"><?= $this->lang->line('sa_time_14m_ago') ?></div>
         </div>
     </div>
     <div class="list-item">
         <div>
-            <div class="list-item-name">Fatih Demirel - HR Modülü Kullandı</div>
-            <div class="list-item-value">28 dakika önce</div>
+            <div class="list-item-name"><?= $this->lang->line('sa_activity_hr_used') ?></div>
+            <div class="list-item-value"><?= $this->lang->line('sa_time_28m_ago') ?></div>
         </div>
     </div>
     <div class="list-item">
         <div>
-            <div class="list-item-name">Sistem Güncellemesi Uygulandı v2.14.5</div>
-            <div class="list-item-value">1 saat önce</div>
+            <div class="list-item-name"><?= $this->lang->line('sa_activity_update') ?></div>
+            <div class="list-item-value"><?= $this->lang->line('sa_time_1h_ago') ?></div>
         </div>
     </div>
     <div class="list-item">
         <div>
-            <div class="list-item-name">Yeni Kullanıcı Eklendi: Merve Kaya</div>
-            <div class="list-item-value">3 saat önce</div>
+            <div class="list-item-name"><?= $this->lang->line('sa_activity_user_added') ?></div>
+            <div class="list-item-value"><?= $this->lang->line('sa_time_3h_ago') ?></div>
         </div>
     </div>
 </div>

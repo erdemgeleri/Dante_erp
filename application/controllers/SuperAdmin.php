@@ -20,42 +20,45 @@ class SuperAdmin extends MY_Controller {
         $this->load->view('superadmin/add_user');
     }
     public function add_user_post(){
+        // Form etiketleri ve hata mesajları dil dosyasından (MY_Controller dil yüklemesi)
         $this->form_validation->set_rules(
-            'name', 
-            'İsim', 
+            'name',
+            $this->lang->line('label_first_name'),
             'required'
         );
         $this->form_validation->set_rules(
             'surname',
-            'Soyisim',
+            $this->lang->line('label_last_name'),
             'required|trim'
         );
         $this->form_validation->set_rules(
             'email',
-            'E-posta',
+            $this->lang->line('label_email'),
             'required|valid_email|is_unique[auth_users.email]'
         );
         $this->form_validation->set_rules(
             'phone',
-            'Telefon Numarası',
+            $this->lang->line('label_phone'),
             'required|trim'
         );
         $this->form_validation->set_rules(
             'role',
-            'Kullanıcı Rolü',
+            $this->lang->line('label_role'),
             'required|in_list[super_admin,admin,user]'
         );
         $this->form_validation->set_rules(
-            'username', 'Kullanıcı Adı', 'required|is_unique[auth_users.username]'
+            'username',
+            $this->lang->line('label_username'),
+            'required|is_unique[auth_users.username]'
         );
         $this->form_validation->set_rules(
             'address',
-            'Adres',
+            $this->lang->line('label_address'),
             'required'
         );
         $this->form_validation->set_rules(
             'password',
-            'Şifre',
+            $this->lang->line('label_password'),
             'required|min_length[6]'
         );
         if($this->form_validation->run() === FALSE){

@@ -1,5 +1,5 @@
-<?php 
-    $page_title = 'Kullanıcı Düzenle';
+<?php
+    $page_title = $this->lang->line('page_edit_user');
 ?>
 
 <?php $this->load->view('partials/header'); ?>
@@ -310,8 +310,8 @@
     <!-- Page Header -->
     <div class="form-container">
         <div class="page-header">
-            <h1>Kullanıcı Düzenle</h1>
-            <p>Kullanıcı bilgilerini güncelleyin</p>
+            <h1><?= $this->lang->line('page_edit_user') ?></h1>
+            <p><?= $this->lang->line('desc_edit_user') ?></p>
         </div>
 
         <!-- Form Container -->
@@ -319,138 +319,137 @@
         
         <div class="info-box">
             <i class="fas fa-info-circle"></i>
-            Yıldız (<span class="required">*</span>) ile işaretlenen alanlar zorunludur.
+            <?= $this->lang->line('info_required_fields') ?>
         </div>
 
         <!-- Personal Information Section -->
-        <div class="section-title">Kişisel Bilgiler</div>
+        <div class="section-title"><?= $this->lang->line('section_personal') ?></div>
 
         <div class="form-group">
             <label for="full_name">
-                Tam Ad <span class="required">*</span>
+                <?= $this->lang->line('label_full_name') ?> <span class="required">*</span>
             </label>
             <input 
                 type="text" 
                 id="full_name" 
                 name="full_name" 
-                placeholder="Tam adı giriniz"
+                placeholder="<?= $this->lang->line('placeholder_full_name') ?>"
                 required
                 value="<?= isset($user->full_name) ? htmlspecialchars($user->full_name) : '' ?>"
             >
-            <div class="form-text">Kullanıcının tam adı</div>
+            <div class="form-text"><?= $this->lang->line('help_full_name') ?></div>
         </div>
 
         <div class="form-group">
             <label for="phone">
-                Telefon Numarası <span class="required">*</span>
+                <?= $this->lang->line('label_phone') ?> <span class="required">*</span>
             </label>
             <input 
                 type="tel" 
                 id="phone" 
                 name="phone" 
-                placeholder="+90 (XXX) XXX XX XX"
+                placeholder="<?= $this->lang->line('placeholder_phone') ?>"
                 required
                 value="<?= isset($user->phone) ? htmlspecialchars($user->phone) : '' ?>"
             >
-            <div class="form-text">Geçerli bir telefon numarası giriniz</div>
+            <div class="form-text"><?= $this->lang->line('help_phone') ?></div>
         </div>
 
         <div class="form-group">
             <label for="address">
-                Adres <span class="required">*</span>
+                <?= $this->lang->line('label_address') ?> <span class="required">*</span>
             </label>
             <textarea 
                 id="address" 
                 name="address" 
-                placeholder="Tam adres giriniz"
+                placeholder="<?= $this->lang->line('placeholder_address') ?>"
                 required
             ><?= isset($user->address) ? htmlspecialchars($user->address) : '' ?></textarea>
-            <div class="form-text">Ev veya iş adresi</div>
+            <div class="form-text"><?= $this->lang->line('help_address') ?></div>
         </div>
 
         <!-- Account Information Section -->
-        <div class="section-title">Hesap Bilgileri</div>
+        <div class="section-title"><?= $this->lang->line('section_account') ?></div>
 
         <div class="form-group">
             <label for="username">
-                Kullanıcı Adı <span class="required">*</span>
+                <?= $this->lang->line('label_username') ?> <span class="required">*</span>
             </label>
             <input 
                 type="text" 
                 id="username" 
                 name="username" 
-                placeholder="Kullanıcı adı giriniz"
+                placeholder="<?= $this->lang->line('placeholder_username') ?>"
                 required
                 value="<?= isset($user->username) ? htmlspecialchars($user->username) : '' ?>"
             >
-            <div class="form-text">Oturum açma için kullanılan adı</div>
+            <div class="form-text"><?= $this->lang->line('help_username') ?></div>
         </div>
 
         <div class="form-group">
             <label for="email">
-                E-posta <span class="required">*</span>
+                <?= $this->lang->line('label_email') ?> <span class="required">*</span>
             </label>
             <input 
                 type="email" 
                 id="email" 
                 name="email" 
-                placeholder="ornek@example.com"
+                placeholder="<?= $this->lang->line('placeholder_email_edit') ?>"
                 required
                 value="<?= isset($user->email) ? htmlspecialchars($user->email) : '' ?>"
             >
-            <div class="form-text">Geçerli bir e-posta adresi giriniz</div>
+            <div class="form-text"><?= $this->lang->line('help_email') ?></div>
         </div>
 
         <!-- Role Section -->
-        <div class="section-title">Rol ve İzinler</div>
+        <div class="section-title"><?= $this->lang->line('section_role') ?></div>
 
         <div class="form-group">
             <label for="role">
-                Kullanıcı Rolü <span class="required">*</span>
+                <?= $this->lang->line('label_role') ?> <span class="required">*</span>
             </label>
             <select id="role" name="role" required>
-                <option value="">Rol seçiniz</option>
+                <option value=""><?= $this->lang->line('placeholder_role') ?></option>
                 <option value="user" <?= (isset($user) && $user->role === 'user') ? 'selected' : '' ?>>
-                    Kullanıcı
+                    <?= $this->lang->line('user_role_user') ?>
                 </option>
                 <option value="admin" <?= (isset($user) && $user->role === 'admin') ? 'selected' : '' ?>>
-                    Yönetici
+                    <?= $this->lang->line('user_role_admin') ?>
                 </option>
                 <option value="super_admin" <?= (isset($user) && $user->role === 'super_admin') ? 'selected' : '' ?>>
-                    Super Admin
+                    <?= $this->lang->line('user_role_super_admin') ?>
                 </option>
             </select>
             <div class="form-text">
-                Kullanıcının sistem içinde sahip olacağı rol ve yetkileri belirler
+                <?= $this->lang->line('help_role') ?>
             </div>
         </div>
 
         <!-- Password Section -->
-        <div class="section-title">Şifre Değiştir</div>
+        <div class="section-title"><?= $this->lang->line('section_password') ?></div>
 
         <div class="form-group">
             <label for="password">
-                Yeni Şifre
+                <?= $this->lang->line('label_new_password') ?>
             </label>
             <input 
                 type="password" 
                 id="password" 
                 name="password" 
-                placeholder="Şifreyi değiştirmek istemiyorsanız boş bırakın"
+                placeholder="<?= $this->lang->line('placeholder_password_optional') ?>"
             >
             <div class="form-text">
-                Şifreyi değiştirmek istemiyorsanız bu alanı boş bırakın. 
-                Değiştirmek istiyorsanız en az 6 karakter olmalıdır.
+                <?= $this->lang->line('help_password_optional') ?>
             </div>
         </div>
 
         <!-- Form Actions -->
         <div class="form-actions">
             <a href="<?= site_url('superadmin/users') ?>" class="btn btn-secondary">
-                <i class="fas fa-arrow-left"></i> Geri Dön
+                <i class="fas fa-arrow-left"></i> <?= $this->lang->line('btn_back') ?>
             </a>
             <button type="submit" class="btn btn-primary" id="submitBtn">
-                <i class="fas fa-save"></i> Değişiklikleri Kaydet
+                <i class="fas fa-save"></i> <?= $this->lang->line('btn_save_changes') ?>
             </button>
         </div>
         </form>
@@ -460,35 +459,33 @@
 <script>
     const form = document.getElementById('editUserForm');
     const submitBtn = document.getElementById('submitBtn');
+    const LANG = {
+        msgFillRequired: <?= json_encode($this->lang->line('msg_fill_required')) ?>,
+        btnSaving: <?= json_encode($this->lang->line('btn_saving')) ?>,
+        msgValidEmail: <?= json_encode($this->lang->line('msg_valid_email')) ?>,
+        msgPasswordMin: <?= json_encode($this->lang->line('msg_password_min')) ?>
+    };
 
-    // Form Submit
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // Validate form
         if (!form.checkValidity()) {
-            alert('Lütfen tüm zorunlu alanları doldurunuz.');
+            alert(LANG.msgFillRequired);
             return;
         }
-
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="spinner"></span> Kaydediliyor...';
-
-        setTimeout(() => {
-            form.submit();
-        }, 300);
+        submitBtn.innerHTML = '<span class="spinner"></span> ' + LANG.btnSaving;
+        setTimeout(() => { form.submit(); }, 300);
     });
 
     document.getElementById('email').addEventListener('blur', function() {
         const email = this.value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
         if (email && !emailRegex.test(email)) {
             this.parentElement.classList.add('has-error');
             if (!this.parentElement.querySelector('.error-message')) {
                 const errorMsg = document.createElement('div');
                 errorMsg.className = 'error-message';
-                errorMsg.textContent = 'Geçerli bir e-posta adresi giriniz';
+                errorMsg.textContent = LANG.msgValidEmail;
                 this.parentElement.appendChild(errorMsg);
             }
         } else {
@@ -507,14 +504,12 @@
 
     document.getElementById('password').addEventListener('input', function() {
         const password = this.value;
-        const form = this.closest('form');
-        
         if (password && password.length < 6) {
             this.parentElement.classList.add('has-error');
             if (!this.parentElement.querySelector('.error-message')) {
                 const errorMsg = document.createElement('div');
                 errorMsg.className = 'error-message';
-                errorMsg.textContent = 'Şifre en az 6 karakter olmalıdır';
+                errorMsg.textContent = LANG.msgPasswordMin;
                 this.parentElement.appendChild(errorMsg);
             }
         } else {

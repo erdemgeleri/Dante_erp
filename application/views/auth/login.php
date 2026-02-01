@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="<?= isset($current_lang) ? $current_lang : 'tr' ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giriş Yap - Dante ERP</title>
+    <title><?= $this->lang->line('title_login') ?> - <?= $this->lang->line('app_name') ?></title>
     <style>
         * {
             margin: 0;
@@ -146,36 +146,45 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">DANTE ERP</div>
-            <div class="tagline">İşletme Yönetim Sistemi</div>
+            <div class="logo"><?= $this->lang->line('app_name') ?></div>
+            <div class="tagline"><?= $this->lang->line('app_tagline') ?></div>
         </div>
 
         <div class="card">
-            <div class="title">Giriş Yap</div>
+            <div class="title"><?= $this->lang->line('title_login') ?></div>
 
             <form action="<?= site_url('auth/login_post') ?>" method="post">
                 <?php if($this->session->flashdata('error')): ?>
                     <div class="alert"><?= $this->session->flashdata('error') ?></div>
                 <?php endif; ?>
+                <?php if(validation_errors()): ?>
+                    <div class="alert"><?= validation_errors() ?></div>
+                <?php endif; ?>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="E-posta adresiniz" autocomplete="email">
+                    <label for="email"><?= $this->lang->line('label_email') ?></label>
+                    <input type="email" id="email" name="email" placeholder="<?= $this->lang->line('placeholder_email') ?>" autocomplete="email" value="<?= set_value('email') ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Şifre</label>
-                    <input type="password" id="password" name="password" placeholder="Şifreniz" required autocomplete="current-password">
+                    <label for="password"><?= $this->lang->line('label_password') ?></label>
+                    <input type="password" id="password" name="password" placeholder="<?= $this->lang->line('placeholder_password') ?>" required autocomplete="current-password">
                 </div>
 
-                <button type="submit" class="submit-btn">Giriş Yap</button>
+                <button type="submit" class="submit-btn"><?= $this->lang->line('btn_login') ?></button>
             </form>
 
             <div class="divider"></div>
 
             <div class="footer">
-                Hesabınız yok mu? <a href="<?= site_url('auth/register') ?>">Kayıt olun</a>
+                <?= $this->lang->line('text_no_account') ?> <a href="<?= site_url('auth/register') ?>"><?= $this->lang->line('link_register') ?></a>
             </div>
+            <?php if (isset($current_lang)): ?>
+            <div class="footer" style="margin-top:8px;">
+                <a href="<?= site_url('lang/set/tr') ?>"><?= $this->lang->line('lang_tr') ?></a> |
+                <a href="<?= site_url('lang/set/en') ?>"><?= $this->lang->line('lang_en') ?></a>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </body>

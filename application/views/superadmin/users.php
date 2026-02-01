@@ -1,14 +1,14 @@
-<?php 
-    $page_title = 'Kullanıcı Yönetimi';
+<?php
+    $page_title = $this->lang->line('page_user_management');
     $user_name = 'Super Admin';
     $user_initials = 'SA';
-    $user_role = 'Administrator';
-    
+    $user_role = $this->lang->line('user_role_super_admin');
+
     $nav_menu = [
-        ['label' => 'Dashboard', 'url' => site_url('superadmin/dashboard')],
-        ['label' => 'Kullanıcılar', 'url' => site_url('superadmin/users')],
-        ['label' => 'İzinler', 'url' => site_url('superadmin/permissions')],
-        ['label' => 'Ayarlar', 'url' => site_url('superadmin/settings')]
+        ['label' => $this->lang->line('nav_dashboard'), 'url' => site_url('superadmin/dashboard')],
+        ['label' => $this->lang->line('nav_users'), 'url' => site_url('superadmin/users')],
+        ['label' => $this->lang->line('nav_permissions'), 'url' => site_url('superadmin/permissions')],
+        ['label' => $this->lang->line('nav_settings'), 'url' => site_url('superadmin/settings')]
     ];
 ?>
 
@@ -491,9 +491,9 @@
             <i class="fas fa-users"></i>
         </div>
         <div class="stat-content">
-            <div class="stat-label">Toplam Kullanıcılar</div>
+            <div class="stat-label"><?= $this->lang->line('stat_total_users') ?></div>
             <div class="stat-value"><?= isset($total_users) ? $total_users : 0 ?></div>
-            <div class="stat-description">Sistem içinde kayıtlı</div>
+            <div class="stat-description"><?= $this->lang->line('stat_registered') ?></div>
         </div>
     </div>
 
@@ -502,9 +502,9 @@
             <i class="fas fa-user-check"></i>
         </div>
         <div class="stat-content">
-            <div class="stat-label">Aktif Kullanıcılar</div>
+            <div class="stat-label"><?= $this->lang->line('stat_active_users') ?></div>
             <div class="stat-value"><?= isset($active_users_count) ? $active_users_count : 0 ?></div>
-            <div class="stat-description">Son 30 gün içinde aktif</div>
+            <div class="stat-description"><?= $this->lang->line('stat_active_30_days') ?></div>
         </div>
     </div>
 
@@ -513,20 +513,20 @@
             <i class="fas fa-crown"></i>
         </div>
         <div class="stat-content">
-            <div class="stat-label">Yöneticiler</div>
+            <div class="stat-label"><?= $this->lang->line('stat_administrators') ?></div>
             <div class="stat-value"><?= isset($admin_count) ? $admin_count : 0 ?></div>
-            <div class="stat-description">Admin + Super Admin</div>
+            <div class="stat-description"><?= $this->lang->line('stat_admin_super') ?></div>
         </div>
     </div>
 </div>
 <div class="page-header">
     <div>
-        <h1>Kullanıcı Listesi</h1>
-        <p>Sistem kullanıcılarını yönetin ve kontrol edin</p>
+        <h1><?= $this->lang->line('title_user_list') ?></h1>
+        <p><?= $this->lang->line('desc_manage_users') ?></p>
     </div>
     <div class="header-actions">
         <a href="<?= site_url('superadmin/add_user') ?>" class="btn btn-primary">
-            <i class="fas fa-user-plus"></i> Yeni Kullanıcı
+            <i class="fas fa-user-plus"></i> <?= $this->lang->line('btn_new_user') ?>
         </a>
     </div>
 </div>
@@ -536,12 +536,12 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Kullanıcı</th>
-                    <th>E-posta</th>
-                    <th>Rol</th>
-                    <th>Telefon</th>
-                    <th>Adres</th>
-                    <th>İşlemler</th>
+                    <th><?= $this->lang->line('th_user') ?></th>
+                    <th><?= $this->lang->line('th_email') ?></th>
+                    <th><?= $this->lang->line('th_role') ?></th>
+                    <th><?= $this->lang->line('th_phone') ?></th>
+                    <th><?= $this->lang->line('th_address') ?></th>
+                    <th><?= $this->lang->line('th_actions') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -559,13 +559,9 @@
                         <td><?= $user->email ?></td>
                         <td>
                             <span class="badge badge-<?= str_replace('_', '-', $user->role) ?>">
-                                <?php 
-                                    $roleLabels = [
-                                        'super_admin' => 'Super Admin',
-                                        'admin' => 'Yönetici',
-                                        'user' => 'Kullanıcı'
-                                    ];
-                                    echo $roleLabels[$user->role] ?? $user->role;
+                                <?php
+                                    $roleKey = 'user_role_' . $user->role;
+                                    echo $this->lang->line($roleKey) ?: $user->role;
                                 ?>
                             </span>
                         </td>
@@ -574,10 +570,10 @@
                         <td>
                             <div class="actions-cell">
                                 <a href="<?= site_url('superadmin/edit_user/' . $user->id) ?>" class="action-btn action-btn-edit">
-                                    <i class="fas fa-edit"></i> Düzenle
+                                    <i class="fas fa-edit"></i> <?= $this->lang->line('btn_edit') ?>
                                 </a>
-                                <button type="button" class="action-btn action-btn-delete" onclick="openDeleteModal(<?= $user->id ?>, '<?= htmlspecialchars($user->full_name) ?>')">
-                                    <i class="fas fa-trash"></i> Sil
+                                <button type="button" class="action-btn action-btn-delete" onclick="openDeleteModal(<?= $user->id ?>, '<?= htmlspecialchars($user->full_name, ENT_QUOTES, 'UTF-8') ?>')">
+                                    <i class="fas fa-trash"></i> <?= $this->lang->line('btn_delete') ?>
                                 </button>
                             </div>
                         </td>
@@ -588,7 +584,7 @@
     <?php else: ?>
         <div class="empty-state">
             <i class="fas fa-users"></i>
-            <p>Henüz kullanıcı kaydı bulunmamaktadır.</p>
+            <p><?= $this->lang->line('empty_no_users') ?></p>
         </div>
     <?php endif; ?>
 </div>
@@ -596,7 +592,7 @@
 <?php if(!empty($users)): ?>
     <div class="pagination-section">
         <div>
-            Toplam <?= isset($total_users) ? $total_users : 0 ?> Kullanıcı
+            <?= sprintf($this->lang->line('pagination_total_users'), isset($total_users) ? $total_users : 0) ?>
         </div>
         <div>
             <?= $pagination ?>
@@ -608,15 +604,15 @@
     <div class="modal-content">
         <div class="modal-header">
             <i class="fas fa-exclamation-triangle"></i>
-            <span>Silmeyi Onaylayın</span>
+            <span><?= $this->lang->line('modal_confirm_delete') ?></span>
         </div>
         <div class="modal-body">
-            <strong id="userToDelete"></strong> kullanıcısını silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.
+            <span id="deleteModalPrefix"><?= $this->lang->line('modal_confirm_delete_prefix') ?></span><strong id="userToDelete"></strong><span id="deleteModalSuffix"><?= $this->lang->line('modal_confirm_delete_suffix') ?></span>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-secondary" onclick="closeDeleteModal()">İptal</button>
+            <button class="btn btn-secondary" onclick="closeDeleteModal()"><?= $this->lang->line('btn_cancel') ?></button>
             <button class="btn btn-primary" style="background: #dc2626;" onclick="confirmDelete()">
-                <i class="fas fa-trash"></i> Sil
+                <i class="fas fa-trash"></i> <?= $this->lang->line('btn_delete') ?>
             </button>
         </div>
     </div>

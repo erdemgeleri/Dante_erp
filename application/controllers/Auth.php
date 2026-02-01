@@ -17,14 +17,15 @@ class Auth extends MY_Controller{
 
     public function login_post(){
 
+        // Form alan etiketleri ve hata mesajları dil dosyasından (MY_Controller dil yüklemesi ile)
         $this->form_validation->set_rules(
             'email',
-            'Email',
+            $this->lang->line('label_email'),
             'valid_email|required'
         );
         $this->form_validation->set_rules(
             'password',
-            'Şifre',
+            $this->lang->line('label_password'),
             'required|min_length[6]|max_length[255]'
         );
 
@@ -36,7 +37,7 @@ class Auth extends MY_Controller{
             $this->input->post('password'),
             $user->password
         )){
-            $this->session->set_flashdata('error', 'Geçersiz email veya şifre.');
+            $this->session->set_flashdata('error', $this->lang->line('msg_invalid_credentials'));
             return redirect('auth/login');
         }
         $this->session->set_userdata([
@@ -48,39 +49,40 @@ class Auth extends MY_Controller{
     }
     
     public function register_post(){
+        // Form alan etiketleri dil dosyasından; form_validation mesajları otomatik dil dosyasından gelir
         $this->form_validation->set_rules(
             'first_name',
-            'Ad',
+            $this->lang->line('label_first_name'),
             'required|min_length[2]|max_length[30]'
         );
         $this->form_validation->set_rules(
             'last_name',
-            'Soyad',
+            $this->lang->line('label_last_name'),
             'required|min_length[2]|max_length[30]'
         );
         $this->form_validation->set_rules(
             'username',
-            'Kullanıcı Adı',
+            $this->lang->line('label_username'),
             'required|min_length[3]|max_length[50]|is_unique[auth_users.username]'
         );
         $this->form_validation->set_rules(
             'email',
-            'Email',
+            $this->lang->line('label_email'),
             'valid_email|required|is_unique[auth_users.email]'
         );
         $this->form_validation->set_rules(
             'phone',
-            'Telefon',
+            $this->lang->line('label_phone'),
             'required|min_length[10]|max_length[15]'
         );
         $this->form_validation->set_rules(
             'address',
-            'Adres',
+            $this->lang->line('label_address'),
             'required|min_length[5]|max_length[255]'
         );
         $this->form_validation->set_rules(
             'password',
-            'Şifre',
+            $this->lang->line('label_password'),
             'required|min_length[6]|max_length[255]'
         );
         if($this->form_validation->run() == FALSE){

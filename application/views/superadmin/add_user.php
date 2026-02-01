@@ -1,14 +1,14 @@
-<?php 
-    $page_title = 'Kullanıcı Ekle';
+<?php
+    $page_title = $this->lang->line('page_add_user');
     $user_name = 'Super Admin';
     $user_initials = 'SA';
-    $user_role = 'Administrator';
-    
+    $user_role = $this->lang->line('user_role_super_admin');
+
     $nav_menu = [
-        ['label' => 'Dashboard', 'url' => site_url('superadmin/dashboard')],
-        ['label' => 'Kullanıcılar', 'url' => site_url('superadmin/users')],
-        ['label' => 'İzinler', 'url' => site_url('superadmin/permissions')],
-        ['label' => 'Ayarlar', 'url' => site_url('superadmin/settings')]
+        ['label' => $this->lang->line('nav_dashboard'), 'url' => site_url('superadmin/dashboard')],
+        ['label' => $this->lang->line('nav_users'), 'url' => site_url('superadmin/users')],
+        ['label' => $this->lang->line('nav_permissions'), 'url' => site_url('superadmin/permissions')],
+        ['label' => $this->lang->line('nav_settings'), 'url' => site_url('superadmin/settings')]
     ];
 ?>
 
@@ -320,188 +320,188 @@
 <div class="add-user-container">
     <div class="form-container">
         <div class="page-header">
-            <h1>Yeni Kullanıcı Ekle</h1>
-            <p>Sisteme yeni bir kullanıcı hesabı oluşturun</p>
+            <h1><?= $this->lang->line('title_add_user') ?></h1>
+            <p><?= $this->lang->line('desc_add_user') ?></p>
         </div>
 
         <?php if($this->session->flashdata('error')): ?>
             <div class="alert alert-error">
-                <strong>Hata!</strong> <?= $this->session->flashdata('error') ?>
+                <strong><?= $this->lang->line('alert_error') ?></strong> <?= $this->session->flashdata('error') ?>
             </div>
         <?php endif; ?>
 
         <?php if($this->session->flashdata('success')): ?>
             <div class="alert alert-success">
-                <strong>Başarılı!</strong> <?= $this->session->flashdata('success') ?>
+                <strong><?= $this->lang->line('alert_success') ?></strong> <?= $this->session->flashdata('success') ?>
             </div>
         <?php endif; ?>
 
         <?php if(validation_errors()): ?>
             <div class="alert alert-error">
-                <strong>Doğrulama Hatası!</strong>
+                <strong><?= $this->lang->line('alert_validation_error') ?></strong>
                 <?= validation_errors('<ul><li>', '</li><li>', '</li></ul>') ?>
             </div>
         <?php endif; ?>
 
         <form action="<?= site_url('superadmin/add_user_post') ?>" method="post" novalidate>
             
-            <div class="section-title">Kişisel Bilgiler</div>
+            <div class="section-title"><?= $this->lang->line('section_personal') ?></div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label for="name">
-                        Ad <span class="required">*</span>
+                        <?= $this->lang->line('label_first_name') ?> <span class="required">*</span>
                     </label>
                     <input 
                         type="text" 
                         name="name" 
                         id="name" 
-                        placeholder="Adı girin"
+                        placeholder="<?= $this->lang->line('placeholder_name') ?>"
                         required
                         minlength="2"
                         maxlength="50"
                         value="<?= set_value('name') ?>"
                     >
-                    <div class="help-text">En az 2 karakter</div>
+                    <div class="help-text"><?= $this->lang->line('help_min_2_chars') ?></div>
                 </div>
                 <div class="form-group">
                     <label for="surname">
-                        Soyadı <span class="required">*</span>
+                        <?= $this->lang->line('label_last_name') ?> <span class="required">*</span>
                     </label>
                     <input 
                         type="text" 
                         name="surname" 
                         id="surname" 
-                        placeholder="Soyadı girin"
+                        placeholder="<?= $this->lang->line('placeholder_surname') ?>"
                         required
                         minlength="2"
                         maxlength="50"
                         value="<?= set_value('surname') ?>"
                     >
-                    <div class="help-text">En az 2 karakter</div>
+                    <div class="help-text"><?= $this->lang->line('help_min_2_chars') ?></div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="email">
-                    E-posta <span class="required">*</span>
+                    <?= $this->lang->line('label_email') ?> <span class="required">*</span>
                 </label>
                 <input 
                     type="email" 
                     name="email" 
                     id="email" 
-                    placeholder="ornek@dante.com"
+                    placeholder="<?= $this->lang->line('placeholder_email_add') ?>"
                     required
                     value="<?= set_value('email') ?>"
                 >
-                <div class="help-text">Geçerli bir e-posta adresi giriniz</div>
+                <div class="help-text"><?= $this->lang->line('help_email') ?></div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label for="phone">
-                        Telefon <span class="required">*</span>
+                        <?= $this->lang->line('label_phone') ?> <span class="required">*</span>
                     </label>
                     <input 
                         type="tel" 
                         name="phone" 
                         id="phone" 
-                        placeholder="+90 555 555 5555"
+                        placeholder="<?= $this->lang->line('placeholder_phone_add') ?>"
                         required
                         value="<?= set_value('phone') ?>"
                     >
-                    <div class="help-text">Geçerli bir telefon numarası giriniz</div>
+                    <div class="help-text"><?= $this->lang->line('help_phone') ?></div>
                 </div>
                 <div class="form-group">
                     <label for="role">
-                        Rol <span class="required">*</span>
+                        <?= $this->lang->line('th_role') ?> <span class="required">*</span>
                     </label>
                     <select name="role" id="role" required>
-                        <option value="">-- Seçin --</option>
-                        <option value="user" <?= set_select('role', 'user') ?>>Kullanıcı</option>
-                        <option value="admin" <?= set_select('role', 'admin') ?>>Yönetici</option>
-                        <option value="super_admin" <?= set_select('role', 'super_admin') ?>>Super Admin</option>
+                        <option value=""><?= $this->lang->line('placeholder_select') ?></option>
+                        <option value="user" <?= set_select('role', 'user') ?>><?= $this->lang->line('user_role_user') ?></option>
+                        <option value="admin" <?= set_select('role', 'admin') ?>><?= $this->lang->line('user_role_admin') ?></option>
+                        <option value="super_admin" <?= set_select('role', 'super_admin') ?>><?= $this->lang->line('user_role_super_admin') ?></option>
                     </select>
-                    <div class="help-text">Kullanıcının sistem rolünü seçin</div>
+                    <div class="help-text"><?= $this->lang->line('help_role_select') ?></div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="address">
-                    Adres <span class="required">*</span>
+                    <?= $this->lang->line('label_address') ?> <span class="required">*</span>
                 </label>
                 <textarea 
                     name="address" 
                     id="address" 
-                    placeholder="Tam adres girin"
+                    placeholder="<?= $this->lang->line('placeholder_address_short') ?>"
                     required
                     maxlength="200"
                 ><?= set_value('address') ?></textarea>
-                <div class="help-text">Ev veya iş adresi (en fazla 200 karakter)</div>
+                <div class="help-text"><?= $this->lang->line('help_address_max') ?></div>
             </div>
 
-            <div class="section-title">Hesap Bilgileri</div>
+            <div class="section-title"><?= $this->lang->line('section_account') ?></div>
 
             <div class="form-group">
                 <label for="username">
-                    Kullanıcı Adı <span class="required">*</span>
+                    <?= $this->lang->line('label_username') ?> <span class="required">*</span>
                 </label>
                 <input 
                     type="text"
                     name="username" 
                     id="username" 
-                    placeholder="Kullanıcı adı girin"
+                    placeholder="<?= $this->lang->line('placeholder_username_add') ?>"
                     required
                     minlength="4"
                     maxlength="50"
                     value="<?= set_value('username') ?>"
                 >
-                <div class="help-text">4-50 karakter arasında olmalıdır</div>
+                <div class="help-text"><?= $this->lang->line('help_username_range') ?></div>
             </div>
 
             <div class="form-group">
                 <label for="password">
-                    Şifre <span class="required">*</span>
+                    <?= $this->lang->line('label_password') ?> <span class="required">*</span>
                 </label>
                 <input 
                     type="password" 
                     name="password" 
                     id="password" 
-                    placeholder="Güçlü bir şifre oluşturun"
+                    placeholder="<?= $this->lang->line('placeholder_password_strong') ?>"
                     required
                     minlength="6"
                 >
                 <div class="password-info">
-                    <strong>Şifre Gereksinimleri:</strong>
+                    <strong><?= $this->lang->line('password_requirements') ?></strong>
                     <ul>
-                        <li>Minimum 6 karakter</li>
-                        <li>Büyük harf, küçük harf ve rakam içermesi önerilir</li>
-                        <li>Özel karakter (@, #, $, %) içermesi daha güvenli olur</li>
+                        <li><?= $this->lang->line('password_req_min') ?></li>
+                        <li><?= $this->lang->line('password_req_mixed') ?></li>
+                        <li><?= $this->lang->line('password_req_special') ?></li>
                     </ul>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="password_confirm">
-                    Şifre Tekrarı <span class="required">*</span>
+                    <?= $this->lang->line('label_password_confirm') ?> <span class="required">*</span>
                 </label>
                 <input 
                     type="password" 
                     name="password_confirm" 
                     id="password_confirm" 
-                    placeholder="Şifreyi tekrar girin"
+                    placeholder="<?= $this->lang->line('placeholder_password_confirm') ?>"
                     required
                     minlength="6"
                 >
-                <div class="help-text">Şifrelerin eşleştiğini kontrol edin</div>
+                <div class="help-text"><?= $this->lang->line('help_password_match') ?></div>
             </div>
 
             <div class="form-actions">
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-user-plus"></i> Kullanıcı Ekle
+                    <i class="fas fa-user-plus"></i> <?= $this->lang->line('btn_add_user') ?>
                 </button>
                 <a href="<?= site_url('superadmin/users') ?>" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left"></i> Geri Dön
+                    <i class="fas fa-arrow-left"></i> <?= $this->lang->line('btn_back') ?>
                 </a>
             </div>
         </form>
@@ -525,7 +525,7 @@
     document.querySelector('form').addEventListener('submit', function(e) {
         if (passwordInput.value !== passwordConfirmInput.value) {
             e.preventDefault();
-            alert('Şifreler eşleşmiyor!');
+            alert(<?= json_encode($this->lang->line('msg_password_mismatch')) ?>);
             passwordConfirmInput.focus();
             return false;
         }

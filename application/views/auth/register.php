@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="<?= isset($current_lang) ? $current_lang : 'tr' ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kayıt Ol - Dante ERP</title>
+    <title><?= $this->lang->line('title_register') ?> - <?= $this->lang->line('app_name') ?></title>
     <style>
         * {
             margin: 0;
@@ -171,12 +171,12 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="logo">DANTE ERP</div>
-            <div class="tagline">İşletme Yönetim Sistemi</div>
+            <div class="logo"><?= $this->lang->line('app_name') ?></div>
+            <div class="tagline"><?= $this->lang->line('app_tagline') ?></div>
         </div>
 
         <div class="card">
-            <div class="title">Kayıt Ol</div>
+            <div class="title"><?= $this->lang->line('title_register') ?></div>
 
             <form action="<?= site_url('auth/register_post') ?>" method="post">
                 <?php if($this->session->flashdata('error')): ?>
@@ -187,51 +187,61 @@
                     <div class="alert alert-success"><?= $this->session->flashdata('success') ?></div>
                 <?php endif; ?>
 
+                <?php if(validation_errors()): ?>
+                    <div class="alert alert-error"><?= validation_errors() ?></div>
+                <?php endif; ?>
+
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="first_name">Ad</label>
-                        <input type="text" id="first_name" name="first_name" placeholder="Ad" required minlength="2" maxlength="30">
+                        <label for="first_name"><?= $this->lang->line('label_first_name') ?></label>
+                        <input type="text" id="first_name" name="first_name" placeholder="<?= $this->lang->line('placeholder_first_name') ?>" required minlength="2" maxlength="30" value="<?= set_value('first_name') ?>">
                     </div>
                     <div class="form-group">
-                        <label for="last_name">Soyad</label>
-                        <input type="text" id="last_name" name="last_name" placeholder="Soyad" required minlength="2" maxlength="30">
+                        <label for="last_name"><?= $this->lang->line('label_last_name') ?></label>
+                        <input type="text" id="last_name" name="last_name" placeholder="<?= $this->lang->line('placeholder_last_name') ?>" required minlength="2" maxlength="30" value="<?= set_value('last_name') ?>">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="username">Kullanıcı Adı</label>
-                    <input type="text" id="username" name="username" placeholder="Kullanıcı adı" required minlength="3" maxlength="20">
-                    <div class="hint">3-20 karakter</div>
+                    <label for="username"><?= $this->lang->line('label_username') ?></label>
+                    <input type="text" id="username" name="username" placeholder="<?= $this->lang->line('placeholder_username_short') ?>" required minlength="3" maxlength="20" value="<?= set_value('username') ?>">
+                    <div class="hint"><?= $this->lang->line('hint_username_3_20') ?></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="ornek@ogrenci.edu.tr" required>
+                    <label for="email"><?= $this->lang->line('label_email') ?></label>
+                    <input type="email" id="email" name="email" placeholder="<?= $this->lang->line('placeholder_email_reg') ?>" required value="<?= set_value('email') ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Telefon</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+90 555 555 5555" required>
+                    <label for="phone"><?= $this->lang->line('label_phone') ?></label>
+                    <input type="tel" id="phone" name="phone" placeholder="<?= $this->lang->line('placeholder_phone_reg') ?>" required value="<?= set_value('phone') ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Adres</label>
-                    <input type="text" id="address" name="address" placeholder="Adresiniz" required>
+                    <label for="address"><?= $this->lang->line('label_address') ?></label>
+                    <input type="text" id="address" name="address" placeholder="<?= $this->lang->line('placeholder_address_reg') ?>" required value="<?= set_value('address') ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Şifre</label>
-                    <input type="password" id="password" name="password" placeholder="Şifre (min. 6 karakter)" required minlength="6">
+                    <label for="password"><?= $this->lang->line('label_password') ?></label>
+                    <input type="password" id="password" name="password" placeholder="<?= $this->lang->line('placeholder_password_min') ?>" required minlength="6">
                 </div>
 
-                <button type="submit" class="submit-btn">Kayıt Ol</button>
+                <button type="submit" class="submit-btn"><?= $this->lang->line('btn_register') ?></button>
             </form>
 
             <div class="divider"></div>
 
             <div class="footer">
-                Hesabınız var mı? <a href="<?= site_url('auth/login') ?>">Giriş yapın</a>
+                <?= $this->lang->line('text_has_account') ?> <a href="<?= site_url('auth/login') ?>"><?= $this->lang->line('link_login') ?></a>
             </div>
+            <?php if (isset($current_lang)): ?>
+            <div class="footer" style="margin-top:8px;">
+                <a href="<?= site_url('lang/set/tr') ?>"><?= $this->lang->line('lang_tr') ?></a> |
+                <a href="<?= site_url('lang/set/en') ?>"><?= $this->lang->line('lang_en') ?></a>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </body>

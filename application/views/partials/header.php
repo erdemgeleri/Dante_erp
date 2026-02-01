@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="<?= isset($current_lang) ? $current_lang : 'tr' ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($page_title) ? $page_title . ' - Dante ERP' : 'Dante ERP' ?></title>
+    <title><?= isset($page_title) ? $page_title . ' - ' . $this->lang->line('app_name') : $this->lang->line('app_name') ?></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -170,17 +170,24 @@
         <div class="header-container">
             <a class="logo">
                 <i class="fas fa-cubes"></i>
-                <span>DANTE ERP</span>
+                <span><?= $this->lang->line('app_name') ?></span>
             </a>
             <div class="header-right">
                 <div class="user-info">
                     <div class="user-avatar"><?= isset($user_initials) ? $user_initials : 'SA' ?></div>
                     <div class="user-details">
                         <div class="user-name"><?= isset($user_name) ? $user_name : 'Super Admin' ?></div>
-                        <div class="user-role"><?= isset($user_role) ? $user_role : 'Administrator' ?></div>
+                        <div class="user-role"><?= isset($user_role) ? $user_role : $this->lang->line('user_role_admin') ?></div>
                     </div>
                 </div>
-                <button class="logout-btn" title="Çıkış Yap" onclick="window.location.href='<?= site_url('auth/logout') ?>'">
+                <?php if (isset($current_lang)): ?>
+                <span style="font-size:12px; color:var(--text-light);">
+                    <a href="<?= site_url('lang/set/tr') ?>" style="color:inherit; text-decoration:none;"><?= $this->lang->line('lang_tr') ?></a>
+                    <span>|</span>
+                    <a href="<?= site_url('lang/set/en') ?>" style="color:inherit; text-decoration:none;"><?= $this->lang->line('lang_en') ?></a>
+                </span>
+                <?php endif; ?>
+                <button class="logout-btn" title="<?= $this->lang->line('btn_logout') ?>" onclick="window.location.href='<?= site_url('auth/logout') ?>'">
                     <i class="fas fa-sign-out-alt"></i>
                 </button>
             </div>
