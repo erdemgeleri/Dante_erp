@@ -83,6 +83,24 @@ class SuperAdmin extends MY_Controller {
         $this->User_profile_model->create($profileData);
         redirect('superadmin/users');
     }
+    public function delete_user($id){
+        $this->Auth_user_model->delete_by_id($id);
+        redirect('superadmin/users');
+    }
+    public function edit_user($id){
+        $id = (int)$id;
+        $user = $this->Auth_user_model->get_by_id($id);
+        if(!$user){
+            show_404();
+            return;
+        }
+        $data['user'] = $user;
+        $this->load->view('superadmin/edit_user', $data);
+    }
+    public function edit_user_post($id){
+
+    
+    }
 
     public function users() {
         $this->load->library('pagination');
@@ -100,7 +118,9 @@ class SuperAdmin extends MY_Controller {
         $config['cur_tag_close'] = '</a></li>';
         $config['num_tag_open'] = '<li>';
         $config['num_tag_close'] = '</li>';
-
+        $data['total_users'] = $this->Auth_user_model->count_all();
+        $data['active_users_count'] = $this->Auth_user_model->active_users_count();
+        $data['admin_count'] = $this->Auth_user_model->admin_count();
         $this->pagination->initialize($config);
 
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -108,7 +128,8 @@ class SuperAdmin extends MY_Controller {
         $data['pagination'] = $this->pagination->create_links();
 
         $this->load->view('superadmin/users', $data);
-    }
+    }   
+    
 
 
 }

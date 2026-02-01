@@ -21,4 +21,20 @@ class Auth_user_model extends CI_Model{
     public function count_all() {
         return $this->db->count_all($this->table);
     }
+    public function delete_by_id($id){
+        return $this->db->where('id', $id)->delete($this->table);
+    }
+    public function get_by_id($id){
+        $this->db->select('auth_users.id, auth_users.username, auth_users.email, auth_users.role, user_profiles.full_name, user_profiles.phone, user_profiles.address');
+        $this->db->from($this->table);
+        $this->db->join('user_profiles', 'auth_users.id = user_profiles.user_id', 'left');
+        return $this->db->where('auth_users.id', $id)->where('auth_users.status', 1)->get()->row();
+    }
+    public function active_users_count(){
+        return $this->db->where('status', 1)->count_all_results($this->table);
+    }
+    public function admin_count(){
+        return $this->db->where('role', 'admin')->count_all_results($this->table);
+    }
+
 }

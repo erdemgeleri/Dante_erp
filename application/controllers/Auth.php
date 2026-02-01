@@ -107,8 +107,13 @@ class Auth extends MY_Controller{
         return redirect('auth/login');
     }
 
+   
+
     public function logout(){
         $this->session->sess_destroy();
         return redirect('auth/login');  
+    }
+    public function delete_user_by_id($id){
+
     }
 }

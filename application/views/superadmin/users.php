@@ -15,6 +15,81 @@
 <?php $this->load->view('partials/header'); ?>
 
 <style>
+    .dashboard-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .stat-card {
+        background: white;
+        border-radius: 8px;
+        padding: 24px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+    }
+
+    .stat-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+
+    .stat-icon.users-icon {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+    }
+
+    .stat-icon.active-icon {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+    }
+
+    .stat-icon.admin-icon {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        color: white;
+    }
+
+    .stat-content {
+        flex: 1;
+    }
+
+    .stat-label {
+        font-size: 13px;
+        color: #999;
+        font-weight: 500;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .stat-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1a1a1a;
+        line-height: 1;
+    }
+
+    .stat-description {
+        font-size: 12px;
+        color: #666;
+        margin-top: 8px;
+    }
+
     .page-header {
         display: flex;
         justify-content: space-between;
@@ -181,16 +256,6 @@
         color: #a855f7;
     }
 
-    .badge-active {
-        background: rgba(34, 197, 94, 0.2);
-        color: #22c55e;
-    }
-
-    .badge-inactive {
-        background: rgba(107, 114, 128, 0.2);
-        color: #6b7280;
-    }
-
     .actions-cell {
         display: flex;
         gap: 8px;
@@ -341,6 +406,10 @@
     }
 
     @media (max-width: 768px) {
+        .dashboard-stats {
+            grid-template-columns: 1fr;
+        }
+
         .page-header {
             flex-direction: column;
             align-items: flex-start;
@@ -384,6 +453,17 @@
             flex-direction: column;
             gap: 12px;
         }
+
+        .stat-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 20px;
+        }
     }
 
     @media (max-width: 480px) {
@@ -394,12 +474,54 @@
         .table {
             min-width: 600px;
         }
+
+        .stat-value {
+            font-size: 24px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+        }
     }
 </style>
 
+<div class="dashboard-stats">
+    <div class="stat-card">
+        <div class="stat-icon users-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-content">
+            <div class="stat-label">Toplam Kullanıcılar</div>
+            <div class="stat-value"><?= isset($total_users) ? $total_users : 0 ?></div>
+            <div class="stat-description">Sistem içinde kayıtlı</div>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon active-icon">
+            <i class="fas fa-user-check"></i>
+        </div>
+        <div class="stat-content">
+            <div class="stat-label">Aktif Kullanıcılar</div>
+            <div class="stat-value"><?= isset($active_users_count) ? $active_users_count : 0 ?></div>
+            <div class="stat-description">Son 30 gün içinde aktif</div>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon admin-icon">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="stat-content">
+            <div class="stat-label">Yöneticiler</div>
+            <div class="stat-value"><?= isset($admin_count) ? $admin_count : 0 ?></div>
+            <div class="stat-description">Admin + Super Admin</div>
+        </div>
+    </div>
+</div>
 <div class="page-header">
     <div>
-        <h1>Kullanıcı Yönetimi</h1>
+        <h1>Kullanıcı Listesi</h1>
         <p>Sistem kullanıcılarını yönetin ve kontrol edin</p>
     </div>
     <div class="header-actions">
@@ -408,8 +530,6 @@
         </a>
     </div>
 </div>
-
-
 
 <div class="table-wrapper">
     <?php if(!empty($users)): ?>
@@ -424,7 +544,7 @@
                     <th>İşlemler</th>
                 </tr>
             </thead>
-            <tbody id="usersTableBody">
+            <tbody>
                 <?php foreach($users as $user): ?>
                     <tr>
                         <td>
@@ -476,7 +596,7 @@
 <?php if(!empty($users)): ?>
     <div class="pagination-section">
         <div>
-            Toplam <?= $this->Auth_user_model->count_all() ?> Kullanıcı
+            Toplam <?= isset($total_users) ? $total_users : 0 ?> Kullanıcı
         </div>
         <div>
             <?= $pagination ?>
