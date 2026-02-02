@@ -1,18 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------
-| Application language file (English)
-| Used for controller, view and general messages.
-| -------------------------------------------------------------------
-*/
 
-// General
+
+// Genel
 $lang['app_name']           = 'Dante ERP';
 $lang['app_tagline']        = 'Business Management System';
 
-// Auth - Login / Register
+// Kayıt / Giriş (auth.php)
 $lang['title_login']        = 'Login';
 $lang['title_register']     = 'Register';
 $lang['label_email']        = 'Email';
@@ -33,20 +28,20 @@ $lang['text_no_account']    = "Don't have an account?";
 $lang['text_has_account']   = 'Already have an account?';
 $lang['msg_invalid_credentials'] = 'Invalid email or password.';
 
-// Header / Common
+// Header
 $lang['btn_logout']         = 'Logout';
 $lang['user_role_admin']    = 'Administrator';
 $lang['user_role_super_admin'] = 'Super Administrator';
 $lang['user_role_user']     = 'User';
 
-// Access
+// Hata mesajları
 $lang['access_denied']      = 'Access denied. Insufficient permissions.';
 
-// Language switcher
+// Dil Seçenekleri
 $lang['lang_tr']            = 'Türkçe';
 $lang['lang_en']            = 'English';
 
-// SuperAdmin - User Management (users.php)
+// SuperAdmin - Kullanıcı Yönetimi (user_list.php)
 $lang['page_user_management']   = 'User Management';
 $lang['nav_dashboard']          = 'Dashboard';
 $lang['nav_users']              = 'Users';
@@ -76,7 +71,7 @@ $lang['modal_confirm_delete_prefix'] = 'Are you sure you want to delete ';
 $lang['modal_confirm_delete_suffix'] = '? This action cannot be undone.';
 $lang['btn_cancel']             = 'Cancel';
 
-// SuperAdmin - Edit User (edit_user.php)
+// SuperAdmin - Kullanıcı Düzenle (edit_user.php)
 $lang['page_edit_user']           = 'Edit User';
 $lang['desc_edit_user']          = 'Update user information';
 $lang['info_required_fields']    = 'Fields marked with an asterisk (<span class="required">*</span>) are required.';
@@ -107,7 +102,7 @@ $lang['msg_fill_required']       = 'Please fill in all required fields.';
 $lang['msg_valid_email']         = 'Please enter a valid email address';
 $lang['msg_password_min']       = 'Password must be at least 6 characters';
 
-// SuperAdmin - Add User (add_user.php)
+// SuperAdmin - Kullanıcı Ekle (add_user.php)
 $lang['page_add_user']            = 'Add User';
 $lang['title_add_user']           = 'Add New User';
 $lang['desc_add_user']            = 'Create a new user account in the system';
@@ -136,7 +131,7 @@ $lang['password_req_special']    = 'Special characters (@, #, $, %) make it more
 $lang['btn_add_user']            = 'Add User';
 $lang['msg_password_mismatch']   = 'Passwords do not match!';
 
-// Auth - Register page (register.php)
+// Auth kayıt formu 
 $lang['placeholder_first_name']  = 'First name';
 $lang['placeholder_last_name']   = 'Last name';
 $lang['placeholder_username_short'] = 'Username';
@@ -146,7 +141,7 @@ $lang['placeholder_address_reg'] = 'Your address';
 $lang['placeholder_password_min'] = 'Password (min. 6 characters)';
 $lang['hint_username_3_20']      = '3-20 characters';
 
-// Dashboard (dashboard/index.php)
+// Anasayfa - Dashboard (dashboard/index.php)
 $lang['page_dashboard']           = 'Dashboard';
 $lang['nav_home']                 = 'Home';
 $lang['nav_projects']             = 'Projects';
@@ -181,7 +176,7 @@ $lang['time_4h_ago']              = '4 hours ago';
 $lang['time_1d_ago']              = '1 day ago';
 $lang['time_3d_ago']              = '3 days ago';
 
-// SuperAdmin - Dashboard (superadmin/dashboard.php)
+// SuperAdmin - Anasayfa (superadmin/dashboard.php)
 $lang['page_superadmin_dashboard']   = 'Super Admin Dashboard';
 $lang['sa_welcome_title']            = 'Welcome';
 $lang['sa_welcome_desc']             = 'ERP Management System - System Administrator Panel';
@@ -232,7 +227,7 @@ $lang['sa_activity_hr_used']         = 'User - HR Module Used';
 $lang['sa_activity_update']          = 'System Update Applied v2.14.5';
 $lang['sa_activity_user_added']      = 'New User Added: Merve Kaya';
 
-// Admin - Dashboard (admin/dashboard.php)
+// Admin - Anasayfa (admin/dashboard.php)
 $lang['ad_admin_dashboard']           = 'Admin Dashboard';
 $lang['ad_manage_business']           = 'Manage your business';
 $lang['ad_welcome_back']              = 'Welcome back, %s!';

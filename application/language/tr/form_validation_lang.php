@@ -1,13 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------
-| Form doğrulama mesajları (Türkçe)
-| CodeIgniter form_validation kütüphanesi bu anahtarları kullanır.
-| {field} = alan adı, {param} = kural parametresi
-| -------------------------------------------------------------------
-*/
 
 $lang['form_validation_required']             = '{field} alanı zorunludur.';
 $lang['form_validation_isset']               = '{field} alanının bir değeri olmalıdır.';

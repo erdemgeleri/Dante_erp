@@ -15,6 +15,6 @@ class Admin extends MY_Controller{
         $this->load->view('admin/add_customer');
     }
     public function add_customer_post(){
-        // Müşteri ekleme işlemleri burada yapılacak
+        // Müşteri ekleme işlemleri burada yapılacak. Veritabanında her patronun birden fazla çalışanı veya müşterisi olabilir. 
     }
 }

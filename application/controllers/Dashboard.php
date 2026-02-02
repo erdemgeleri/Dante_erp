@@ -5,7 +5,7 @@ class Dashboard extends MY_Controller{
     public function __construct()
     {
         parent::__construct();
-        $this->requireLogin(); // Giriş yapmamışsa auth'a atar.
+        $this->requireLogin(); // Giriş yapmamışsa auth'a gönderiyorum
     }
 
     public function index(){

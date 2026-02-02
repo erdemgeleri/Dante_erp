@@ -508,7 +508,6 @@
     </div>
 </div>
 
-<!-- Recent Activities -->
 <h2 class="section-title"><?= $this->lang->line('sa_section_activities') ?></h2>
 <div class="card">
     <div class="list-item">

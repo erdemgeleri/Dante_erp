@@ -5,7 +5,6 @@
 <?php $this->load->view('partials/header'); ?>
 
 <style>
-    /* Edit User Wrapper */
     .edit-user-wrapper {
         display: flex;
         justify-content: center;
@@ -13,7 +12,6 @@
         min-height: calc(100vh - 200px);
     }
 
-    /* Page Header */
     .page-header {
         margin-bottom: 30px;
     }
@@ -31,7 +29,6 @@
         margin: 0;
     }
 
-    /* Form Container */
     .form-container {
         width: 100%;
         max-width: 700px;
@@ -41,7 +38,6 @@
         padding: 30px;
     }
 
-    /* Form Group */
     .form-group {
         margin-bottom: 24px;
     }
@@ -93,7 +89,6 @@
         min-height: 100px;
     }
 
-    /* Form Row (for multiple columns) */
     .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -104,14 +99,12 @@
         margin-bottom: 0;
     }
 
-    /* Helper Text */
     .form-text {
         font-size: 12px;
         color: #999;
         margin-top: 6px;
     }
 
-    /* Error Message */
     .error-message {
         color: #dc2626;
         font-size: 12px;
@@ -124,7 +117,6 @@
         border-color: #dc2626;
     }
 
-    /* Form Actions */
     .form-actions {
         display: flex;
         gap: 12px;
@@ -133,7 +125,6 @@
         border-top: 1px solid #f0f0f0;
     }
 
-    /* Buttons */
     .btn {
         padding: 11px 20px;
         border: none;
@@ -186,7 +177,6 @@
         background: #fdd;
     }
 
-    /* Loading State */
     .btn:disabled {
         opacity: 0.6;
         cursor: not-allowed;
@@ -206,13 +196,11 @@
         to { transform: rotate(360deg); }
     }
 
-    /* Validation Icons */
     .form-group.success input,
     .form-group.success select {
         border-color: #22c55e;
     }
 
-    /* Section Title */
     .section-title {
         font-size: 16px;
         font-weight: 600;
@@ -227,7 +215,6 @@
         margin-top: 0;
     }
 
-    /* Info Alert */
     .info-box {
         background: #eff6ff;
         border-left: 4px solid #2563eb;
@@ -242,7 +229,6 @@
         margin-right: 8px;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
         .edit-user-wrapper {
             padding: 16px;
@@ -305,16 +291,13 @@
     }
 </style>
 
-<!-- Edit User Wrapper -->
 <div class="edit-user-wrapper">
-    <!-- Page Header -->
     <div class="form-container">
         <div class="page-header">
             <h1><?= $this->lang->line('page_edit_user') ?></h1>
             <p><?= $this->lang->line('desc_edit_user') ?></p>
         </div>
 
-        <!-- Form Container -->
         <form id="editUserForm" method="POST" action="<?= site_url('superadmin/edit_user_post') ?>">
         
         <div class="info-box">
@@ -322,7 +305,6 @@
             <?= $this->lang->line('info_required_fields') ?>
         </div>
 
-        <!-- Personal Information Section -->
         <div class="section-title"><?= $this->lang->line('section_personal') ?></div>
 
         <div class="form-group">
@@ -368,7 +350,6 @@
             <div class="form-text"><?= $this->lang->line('help_address') ?></div>
         </div>
 
-        <!-- Account Information Section -->
         <div class="section-title"><?= $this->lang->line('section_account') ?></div>
 
         <div class="form-group">
@@ -401,7 +382,6 @@
             <div class="form-text"><?= $this->lang->line('help_email') ?></div>
         </div>
 
-        <!-- Role Section -->
         <div class="section-title"><?= $this->lang->line('section_role') ?></div>
 
         <div class="form-group">
@@ -425,7 +405,6 @@
             </div>
         </div>
 
-        <!-- Password Section -->
         <div class="section-title"><?= $this->lang->line('section_password') ?></div>
 
         <div class="form-group">
@@ -443,7 +422,6 @@
             </div>
         </div>
 
-        <!-- Form Actions -->
         <div class="form-actions">
             <a href="<?= site_url('superadmin/users') ?>" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> <?= $this->lang->line('btn_back') ?>

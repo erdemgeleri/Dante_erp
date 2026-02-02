@@ -17,7 +17,7 @@
             color: #e2e8f0;
         }
 
-        /* Header / Navigation */
+
         header {
             background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(10px);
@@ -121,14 +121,12 @@
             border-color: rgba(239, 68, 68, 0.5);
         }
 
-        /* Main Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 30px;
         }
 
-        /* Welcome Section */
         .welcome-section {
             background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
             border: 1px solid rgba(71, 85, 105, 0.3);
@@ -148,7 +146,6 @@
             color: #cbd5e1;
         }
 
-        /* Quick Stats */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -195,7 +192,6 @@
             color: #fca5a5;
         }
 
-        /* Content Grid */
         .content-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -203,7 +199,6 @@
             margin-bottom: 30px;
         }
 
-        /* Card Styles */
         .card {
             background: rgba(30, 41, 59, 0.8);
             border: 1px solid rgba(71, 85, 105, 0.3);
@@ -220,7 +215,6 @@
             font-weight: 700;
         }
 
-        /* Recent Projects */
         .project-list {
             list-style: none;
         }
@@ -278,7 +272,6 @@
             color: #93c5fd;
         }
 
-        /* Earnings Widget */
         .earnings-widget {
             background: linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
             border: 1px solid rgba(71, 85, 105, 0.3);
@@ -309,7 +302,6 @@
             line-height: 1.8;
         }
 
-        /* Activity Feed */
         .activity-list {
             list-style: none;
         }
@@ -353,7 +345,6 @@
             color: #64748b;
         }
 
-        /* Buttons */
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -389,7 +380,6 @@
             background-color: rgba(71, 85, 105, 0.4);
         }
 
-        /* Responsive */
         @media (max-width: 1024px) {
             .content-grid {
                 grid-template-columns: 1fr;
@@ -471,7 +461,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-left">
             <a href="<?= site_url('dashboard') ?>" class="logo">XENOURA</a>
@@ -491,15 +480,12 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <div class="container">
-        <!-- Welcome Section -->
         <div class="welcome-section">
             <h1>Hoşgeldiniz! 🚀</h1>
             <p>Yeni projeler keşfet, kazanç yap ve becerilerini geliştir.</p>
         </div>
 
-        <!-- Quick Stats -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Aktif Projeler</div>
@@ -523,9 +509,7 @@
             </div>
         </div>
 
-        <!-- Main Content Grid -->
         <div class="content-grid">
-            <!-- Recent Projects Card -->
             <div class="card">
                 <h2>Son Projeler</h2>
                 <ul class="project-list">
@@ -561,12 +545,10 @@
                 <a href="<?= site_url('projects') ?>" class="btn btn-primary" style="margin-top: 20px; display: block; text-align: center;">Tüm Projeler</a>
             </div>
 
-            <!-- Sidebar Widgets -->
             <div>
-                <!-- Earnings Widget -->
                 <div class="earnings-widget">
                     <div class="earnings-label">Toplam Kazanç</div>
-                    <div class="earnings-amount">₺24.850</div>
+                    <div class="earnings-amount">₺204.850</div>
                     <div class="earnings-detail">
                         <div>Ödenen: ₺22.400</div>
                         <div style="margin-top: 8px;">Beklenmede: ₺2.450</div>
@@ -574,7 +556,6 @@
                     <a href="<?= site_url('earnings') ?>" class="btn btn-secondary" style="margin-top: 16px; display: block; text-align: center;">Detaylı İçgörüler</a>
                 </div>
 
-                <!-- Recent Activity -->
                 <div class="card">
                     <h2>Son Aktiviteler</h2>
                     <ul class="activity-list">

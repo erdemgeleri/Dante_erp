@@ -1,16 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * Temel controller – tüm controller'lar bu sınıfı genişletir.
- * Dil (i18n): önce session, yoksa cookie (kalıcı tercih), varsayılan tr.
- */
 class MY_Controller extends CI_Controller {
 
-    /** Şu anki dil kodu (tr, en). View'larda $current_lang olarak kullanılır. */
     protected $current_lang = 'tr';
 
-    /** İzin verilen dil kodları. */
     protected $allowed_languages = ['tr', 'en'];
 
     public function __construct()
@@ -19,7 +13,6 @@ class MY_Controller extends CI_Controller {
         $this->load->library(['session', 'form_validation']);
         $this->load->helper('url');
 
-        // Dil: önce session, yoksa cookie (bir kere değiştirince kalıcı kalsın diye), yoksa tr
         $lang = $this->session->userdata('language');
         if (empty($lang) || !in_array($lang, $this->allowed_languages, true)) {
             $lang = $this->input->cookie('app_lang');
@@ -30,11 +23,9 @@ class MY_Controller extends CI_Controller {
         }
         $this->current_lang = $lang;
 
-        // Uygulama ve form doğrulama dil dosyalarını yükle (Controller/View/Form validation için)
         $this->lang->load('app', $lang);
         $this->lang->load('form_validation', $lang);
 
-        // Tüm view'larda kullanılmak üzere mevcut dili gönder
         $this->load->vars('current_lang', $this->current_lang);
     }
     protected function requireLogin(){
@@ -55,15 +46,14 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    // Rol bazlı yönlendirme (login sonrası)
     protected function redirectByRole() {
         $role = $this->session->userdata('auth_user_role');
         if ($role === 'super_admin') {
             redirect('superadmin/dashboard');
         } elseif ($role === 'admin') {
-            redirect('admin/dashboard'); // patron paneli
+            redirect('admin/dashboard'); 
         } else {
-            redirect('user/dashboard'); // çalışan paneli
+            redirect('user/dashboard'); 
         }
     }
 

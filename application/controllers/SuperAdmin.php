@@ -20,7 +20,6 @@ class SuperAdmin extends MY_Controller {
         $this->load->view('superadmin/add_user');
     }
     public function add_user_post(){
-        // Form etiketleri ve hata mesajları dil dosyasından (MY_Controller dil yüklemesi)
         $this->form_validation->set_rules(
             'name',
             $this->lang->line('label_first_name'),
@@ -62,7 +61,7 @@ class SuperAdmin extends MY_Controller {
             'required|min_length[6]'
         );
         if($this->form_validation->run() === FALSE){
-            // Hata var, formu tekrar göster
+            
             return $this->load->view('superadmin/add_user');
         }
         // VALID BAŞARILI authData profileData

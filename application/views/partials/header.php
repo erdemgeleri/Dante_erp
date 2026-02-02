@@ -34,7 +34,6 @@
             line-height: 1.6;
         }
 
-        /* Header */
         .header {
             background: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
@@ -122,14 +121,12 @@
             color: var(--danger);
         }
 
-        /* Container */
         .container {
             max-width: 1600px;
             margin: 0 auto;
             padding: 32px 24px;
         }
 
-        /* Footer */
         .footer {
             text-align: center;
             padding: 24px;
@@ -144,7 +141,6 @@
             text-decoration: underline;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .header-container {
                 padding: 0 16px;
@@ -165,7 +161,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="header-container">
             <a class="logo">

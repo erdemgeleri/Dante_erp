@@ -1,13 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------
-| Form validation messages (English)
-| CodeIgniter form_validation library uses these keys.
-| {field} = field name, {param} = rule parameter
-| -------------------------------------------------------------------
-*/
 
 $lang['form_validation_required']             = 'The {field} field is required.';
 $lang['form_validation_isset']               = 'The {field} field must have a value.';

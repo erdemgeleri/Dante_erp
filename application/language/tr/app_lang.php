@@ -1,14 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-| -------------------------------------------------------------------
-| Uygulama dil dosyası (Türkçe)
-| Controller, view ve genel mesajlar için kullanılır.
-| -------------------------------------------------------------------
-*/
 
-// Genel
+
 $lang['app_name']           = 'Dante ERP';
 $lang['app_tagline']        = 'İşletme Yönetim Sistemi';
 

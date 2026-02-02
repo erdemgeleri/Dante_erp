@@ -1,11 +1,9 @@
 <?php 
-    // Sayfa başlığı ve kullanıcı bilgileri
     $page_title = 'Dashboard';
     $user_name = 'Öğrenci';
     $user_initials = 'Ö';
     $user_role = 'Kullanıcı';
     
-    // Navigation menüsü
     $nav_menu = [
         ['label' => 'Anasayfa', 'url' => site_url('dashboard')],
         ['label' => 'Projeler', 'url' => site_url('projects')],
@@ -17,7 +15,6 @@
 <?php $this->load->view('partials/header'); ?>
     <style>
 
-    /* Welcome Section */
     .welcome {
         background: white;
         padding: 30px;
@@ -36,7 +33,6 @@
         font-size: 14px;
     }
 
-    /* Stats Grid */
     .stats-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -80,14 +76,12 @@
         color: #ef4444;
     }
 
-    /* Content Grid */
     .content-grid {
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 30px;
     }
 
-    /* Card */
     .card {
         background: white;
         padding: 24px;
@@ -102,7 +96,6 @@
         color: #1a1a1a;
     }
 
-    /* Project List */
     .project-list {
         list-style: none;
     }
@@ -160,7 +153,6 @@
         color: #0066cc;
     }
 
-    /* Earnings Widget */
     .earnings-widget {
         background: white;
         padding: 20px;
@@ -190,7 +182,6 @@
         line-height: 1.8;
     }
 
-    /* Activity List */
     .activity-list {
         list-style: none;
     }
@@ -234,7 +225,6 @@
         color: #999;
     }
 
-    /* Button */
     .btn {
         display: inline-block;
         padding: 8px 16px;
@@ -269,7 +259,6 @@
         background: #e8e8e8;
     }
 
-    /* Responsive */
     @media (max-width: 1024px) {
         .content-grid {
             grid-template-columns: 1fr;
@@ -309,13 +298,11 @@
     }
 </style>
 
-<!-- Welcome Section -->
 <div class="welcome">
     <h1>Hoşgeldiniz! 👋</h1>
     <p>Sisteminizin güncel durumunu görüntüleyin ve yönetin.</p>
 </div>
 
-<!-- Stats Grid -->
 <div class="stats-grid">
     <div class="stat-card">
         <div class="stat-label">Aktif İşlemler</div>
@@ -339,9 +326,7 @@
     </div>
 </div>
 
-<!-- Main Content Grid -->
 <div class="content-grid">
-    <!-- Recent Projects -->
     <div class="card">
         <h2>Son İşlemler</h2>
         <ul class="project-list">
@@ -377,9 +362,7 @@
         <a href="<?= site_url('projects') ?>" class="btn btn-primary">Tüm İşlemler</a>
     </div>
 
-    <!-- Sidebar -->
     <div>
-        <!-- Earnings Widget -->
         <div class="earnings-widget">
             <div class="earnings-label">Toplam Kazanç</div>
             <div class="earnings-amount">₺24.850</div>
@@ -390,7 +373,6 @@
             <a href="<?= site_url('earnings') ?>" class="btn btn-secondary">Detaylar</a>
         </div>
 
-        <!-- Recent Activity -->
         <div class="card">
             <h2>Son Aktiviteler</h2>
             <ul class="activity-list">

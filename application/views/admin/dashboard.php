@@ -5,7 +5,6 @@
 <?php $this->load->view('partials/header'); ?>
 
 <style>
-    /* Page Header */
     .page-header {
         margin-bottom: 30px;
     }
@@ -23,7 +22,6 @@
         margin: 0;
     }
 
-    /* Welcome Card */
     .welcome-card {
         background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
         border-radius: 12px;
@@ -51,7 +49,6 @@
         margin-top: 12px;
     }
 
-    /* Dashboard Grid */
     .dashboard-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -59,7 +56,6 @@
         margin-bottom: 40px;
     }
 
-    /* Card */
     .dashboard-card {
         background: white;
         border-radius: 12px;
@@ -98,7 +94,6 @@
         transform: scale(1.1) rotate(5deg);
     }
 
-    /* Icon Colors */
     .card-icon.customers-icon {
         background: linear-gradient(135deg, #f0f4ff, #e6f0ff);
         color: #2563eb;
@@ -168,7 +163,6 @@
         margin-top: 4px;
     }
 
-    /* Stats Row */
     .stats-row {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -211,7 +205,6 @@
         color: #1a1a1a;
     }
 
-    /* Quick Actions */
     .quick-actions {
         background: white;
         border-radius: 12px;
@@ -266,8 +259,6 @@
         background: #1d4ed8;
         border-color: #1d4ed8;
     }
-
-    /* Responsive */
     @media (max-width: 1024px) {
         .dashboard-grid {
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -362,13 +353,11 @@
     }
 </style>
 
-<!-- Page Header -->
 <div class="page-header">
     <h1><?= $this->lang->line('ad_admin_dashboard') ?></h1>
     <p><?= $this->lang->line('ad_manage_business') ?></p>
 </div>
 
-<!-- Welcome Card -->
 <div class="welcome-card">
     <h2>
         <?= sprintf($this->lang->line('ad_welcome_back'), $this->session->userdata('full_name') ?: 'Patron') ?>
@@ -380,7 +369,6 @@
     </div>
 </div>
 
-<!-- Stats Row -->
 <div class="stats-row">
     <div class="stat-box">
         <div class="stat-box-label"><?= $this->lang->line('ad_stat_customers') ?></div>
@@ -400,7 +388,6 @@
     </div>
 </div>
 
-<!-- Main Dashboard Grid -->
 <div class="dashboard-grid">
     
     <!-- Müşteriler -->
@@ -499,7 +486,7 @@
 
 </div>
 
-<!-- Quick Actions -->
+<!-- Hızlı Eylemler -->
 <div class="quick-actions">
     <h3><?= $this->lang->line('ad_quick_actions') ?></h3>
     <div class="action-buttons">

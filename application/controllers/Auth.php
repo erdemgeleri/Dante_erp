@@ -49,7 +49,7 @@ class Auth extends MY_Controller{
     }
     
     public function register_post(){
-        // Form alan etiketleri dil dosyasından; form_validation mesajları otomatik dil dosyasından gelir
+        // Form alan etiketleri dil dosyasından; form_validation mesajları otomatik dil dosyasından geliyor
         $this->form_validation->set_rules(
             'first_name',
             $this->lang->line('label_first_name'),
