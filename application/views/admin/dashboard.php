@@ -458,7 +458,6 @@
         <div class="card-count-label"><?= $this->lang->line('ad_analytics') ?></div>
     </a>
 
-    <!-- Finansal -->
     <a href="<?= site_url('admin/finance') ?>" class="dashboard-card">
         <div class="card-icon finance-icon">
             <i class="fas fa-wallet"></i>
@@ -471,7 +470,6 @@
         <div class="card-count-label"><?= $this->lang->line('ad_accounting') ?></div>
     </a>
 
-    <!-- Ayarlar -->
     <a href="<?= site_url('admin/settings') ?>" class="dashboard-card">
         <div class="card-icon settings-icon">
             <i class="fas fa-cog"></i>
@@ -486,11 +484,10 @@
 
 </div>
 
-<!-- Hızlı Eylemler -->
 <div class="quick-actions">
     <h3><?= $this->lang->line('ad_quick_actions') ?></h3>
     <div class="action-buttons">
-        <a href="<?= site_url('admin/customers/add') ?>" class="action-btn primary">
+        <a href="<?= site_url('admin/add_customer') ?>" class="action-btn primary">
             <i class="fas fa-user-plus"></i> <?= $this->lang->line('ad_add_customer') ?>
         </a>
         <a href="<?= site_url('admin/jobs/add') ?>" class="action-btn primary">
